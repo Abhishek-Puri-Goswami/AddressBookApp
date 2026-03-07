@@ -86,3 +86,4 @@ Thumbs.db
 ############################
 src/test/resources/testdata/*.txt
 src/test/resources/testdata/*.csv
+src/test/resources/testdata/*.json

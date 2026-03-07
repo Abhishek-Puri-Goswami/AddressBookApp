@@ -287,8 +287,27 @@
     ```
   - Added unit tests to validate CSV file creation, reading contacts from CSV, handling multiple contacts, and empty CSV file scenarios.
 
-- 🧩 **UC15 – Write Contacts to CSV File :**  
-  _Pending implementation._
+---
+
+- 🧩 **UC15 – JSON File Support :**
+  - Introduces JSON-based persistence for Address Book contacts using the GSON library.
+  - Enables exporting contacts to JSON files and loading them back into the system.
+
+  **Purpose**
+  - Allow contacts to be stored and retrieved in a structured JSON format.
+  - Provide a widely used and flexible format for data storage and exchange.
+
+  **Implementation**
+  - Created a utility class `JSONUtil` to handle JSON serialization and deserialization using the GSON library.
+  - Implemented functionality to save contacts from an Address Book to a JSON file and load contacts from a JSON file into memory.
+  - Added REST endpoints in `AddressBookController`:
+    ```
+    POST /addressbooks/{bookName}/save-json
+    GET /addressbooks/load-json
+    ```
+  - Added unit tests to validate JSON file creation, reading JSON files, handling multiple contacts, and empty JSON file scenarios.
+
+---
 
 - 🧩 **UC16 – Read Contacts from CSV File :**  
   _Pending implementation._
@@ -392,7 +411,8 @@ mvnw spring-boot:run
 │   │   │           │
 │   │   │           ├── 📁 util
 │   │   │           │   ├── 📄 FileUtil.java
-│   │   │           │   └── 📄 CSVUtil.java
+│   │   │           │   ├── 📄 CSVUtil.java
+│   │   │           │   └── 📄 JSONUtil.java
 │   │   │           │
 │   │   │           └── 📄 AddressBookApplication.java
 │   │   │
