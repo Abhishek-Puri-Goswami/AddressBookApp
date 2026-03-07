@@ -80,3 +80,8 @@ Thumbs.db
 # Logs
 ############################
 *.log
+
+############################
+# Other files
+############################
+src/test/resources/testdata/*.txt
