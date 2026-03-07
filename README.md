@@ -89,8 +89,24 @@
 
 ---
 
-- 🧩 **UC5 – Prevent Duplicate Entries :**  
-  _Pending implementation._
+- 🧩 **UC5 – Add Multiple Contacts :**
+  - Extends the Address Book to support storing and managing multiple contacts using Java collection classes.
+  - Enables retrieval of all contacts within a specific Address Book.
+
+  **Purpose**
+  - Allow the Address Book to store multiple contact entries instead of a single contact.
+  - Provide an API to retrieve all contacts associated with a particular Address Book.
+
+  **Implementation**
+  - Utilized `List<Contact>` inside the `AddressBook` model to maintain multiple contacts.
+  - Implemented a `getContacts()` method in `AddressBookService` to retrieve all contacts for a given Address Book.
+  - Added a REST endpoint in `AddressBookController`:
+    ```
+    GET /addressbooks/{bookName}/contacts
+    ```
+  - Added unit tests to verify handling of multiple contacts, empty contact lists, duplicate entries, large datasets, and multiple Address Books.
+
+---
 
 - 🧩 **UC6 – Multiple Address Books :**  
   _Pending implementation._
