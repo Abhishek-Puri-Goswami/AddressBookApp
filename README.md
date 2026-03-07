@@ -70,8 +70,24 @@
 
 ---
 
-- 🧩 **UC4 – Delete Contact :**  
-  _Pending implementation._
+- 🧩 **UC4 – Delete Contact :**
+  - Introduces the ability to remove an existing contact from an Address Book using a REST API.
+  - Enables management of stored contacts by allowing deletion based on contact identity.
+
+  **Purpose**
+  - Allow users to delete a contact from an Address Book using the person's first name and last name.
+  - Maintain accurate and up-to-date contact records within the system.
+
+  **Implementation**
+  - Implemented a `deleteContact()` method in `AddressBookService` to locate and remove a contact from the `List<Contact>` using `removeIf()`.
+  - Added a REST endpoint in `AddressBookController`:
+    ```
+    DELETE /addressbooks/{bookName}/contacts
+    ```
+  - The endpoint accepts `firstName` and `lastName` as query parameters to identify the contact to be deleted.
+  - Added unit tests verifying successful deletion, handling of non-existing contacts, and cases where the Address Book is not found.
+
+---
 
 - 🧩 **UC5 – Prevent Duplicate Entries :**  
   _Pending implementation._
