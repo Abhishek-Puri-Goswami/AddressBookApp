@@ -85,3 +85,4 @@ Thumbs.db
 # Other files
 ############################
 src/test/resources/testdata/*.txt
+src/test/resources/testdata/*.csv

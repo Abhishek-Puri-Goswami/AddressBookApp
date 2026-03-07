@@ -269,8 +269,23 @@
 
 ---
 
-- 🧩 **UC14 – Count Contacts in File :**  
-  _Pending implementation._
+- 🧩 **UC14 – CSV File Support :**
+  - Introduces structured CSV-based persistence for Address Book contacts using the OpenCSV library.
+  - Enables exporting contacts to CSV files and loading them back into the system.
+
+  **Purpose**
+  - Allow contacts to be stored and retrieved using a structured CSV file format.
+  - Provide a standardized and portable format for contact data storage.
+
+  **Implementation**
+  - Created a utility class `CSVUtil` to manage CSV operations using OpenCSV's `CSVReader` and `CSVWriter`.
+  - Implemented functionality to save contacts from an Address Book to a CSV file and load contacts from a CSV file into memory.
+  - Added REST endpoints in `AddressBookController`:
+    ```
+    POST /addressbooks/{bookName}/save-csv
+    GET /addressbooks/load-csv
+    ```
+  - Added unit tests to validate CSV file creation, reading contacts from CSV, handling multiple contacts, and empty CSV file scenarios.
 
 - 🧩 **UC15 – Write Contacts to CSV File :**  
   _Pending implementation._
@@ -376,7 +391,8 @@ mvnw spring-boot:run
 │   │   │           ├── 📁 threads
 │   │   │           │
 │   │   │           ├── 📁 util
-│   │   │           │   └── 📄 FileUtil.java
+│   │   │           │   ├── 📄 FileUtil.java
+│   │   │           │   └── 📄 CSVUtil.java
 │   │   │           │
 │   │   │           └── 📄 AddressBookApplication.java
 │   │   │
