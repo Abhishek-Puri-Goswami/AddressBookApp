@@ -424,8 +424,27 @@
 
 ---
 
-- 🧩 **UC21 – Add Multiple Contacts Using Thread Pools :**  
-  _Pending implementation._
+- 🧩 **UC21 – Add Multiple Contacts to Database Using Multithreading :**
+  - Enhances the AddressBook system to support inserting multiple contact records into the database concurrently using multithreading.
+
+  **Purpose**
+  - Improve performance when inserting multiple contacts by executing database operations concurrently.
+  - Demonstrate the use of Java multithreading for handling parallel database operations.
+
+  **Implementation**
+  - Created a `threads` package and introduced an `AddContactTask` class implementing `Runnable` to handle individual contact insertion tasks.
+  - Reused the existing `addContact()` method in `ContactRepository` to perform JDBC database insertion.
+  - Implemented a service method in `AddressBookService` to create and manage multiple threads, each responsible for inserting one contact into the database.
+  - Added a REST endpoint in `AddressBookController`:
+  ```
+  POST /addressbooks/db/add-multiple
+  ```
+  - Added tests to verify successful insertion of multiple contacts and ensure all threads complete execution before returning the response.
+
+  **Outcome**
+  - The AddressBook system can now insert multiple contacts into the database concurrently using multithreading, enabling efficient batch insertion operations.
+
+---
 
 - 🧩 **UC22 – Measure Thread Pool Performance :**  
   _Pending implementation._
@@ -514,6 +533,7 @@ mvnw spring-boot:run
 │   │   │           │   └── 📄 JSONStorage.java
 │   │   │           │
 │   │   │           ├── 📁 threads
+│   │   │           │   └── 📄 AddContactTask.java
 │   │   │           │
 │   │   │           ├── 📁 util
 │   │   │           │   ├── 📄 FileUtil.java
