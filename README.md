@@ -388,10 +388,10 @@
   - Reused the existing JDBC database connectivity and `ContactRepository` to retrieve contacts from the database.
   - Implemented grouping and counting logic in the service layer using Java Streams with `groupingBy()` and `counting()`.
   - Added REST endpoints in `AddressBookController`:
-  ```
-  GET /addressbooks/db/count/city
-  GET /addressbooks/db/count/state
-  ```
+    ```
+    GET /addressbooks/db/count/city
+    GET /addressbooks/db/count/state
+    ```
   - Introduced `ContactDTO` to represent API request and response data.
   - Updated controller methods to return DTO objects while the service layer handles conversion between DTOs and model entities.
   - Added unit tests to validate correct grouping, counting, and DTO-based responses.
@@ -414,9 +414,9 @@
   - Implemented transaction management using `setAutoCommit(false)`, `commit()`, and `rollback()` to ensure database consistency.
   - Added a service method in `AddressBookService` to handle contact insertion through the repository layer.
   - Added a REST endpoint in `AddressBookController`:
-  ```
-  POST /addressbooks/db/add-contact
-  ```
+    ```
+    POST /addressbooks/db/add-contact
+    ```
   - Added unit tests to verify successful database insertion and correct interaction with the repository layer.
 
   **Outcome**
@@ -436,9 +436,9 @@
   - Reused the existing `addContact()` method in `ContactRepository` to perform JDBC database insertion.
   - Implemented a service method in `AddressBookService` to create and manage multiple threads, each responsible for inserting one contact into the database.
   - Added a REST endpoint in `AddressBookController`:
-  ```
-  POST /addressbooks/db/add-multiple
-  ```
+    ```
+    POST /addressbooks/db/add-multiple
+    ```
   - Added tests to verify successful insertion of multiple contacts and ensure all threads complete execution before returning the response.
 
   **Outcome**
@@ -446,8 +446,26 @@
 
 ---
 
-- 🧩 **UC22 – Measure Thread Pool Performance :**  
-  _Pending implementation._
+- 🧩 **UC22 – Read Contacts from JSON Server using REST Assured :**
+  - Enhances the AddressBook system to retrieve contact records from an external JSON server using REST API calls executed through automated tests.
+
+  **Purpose**
+  - Enable the application to integrate with an external REST service providing contact data.
+  - Demonstrate REST API testing using the REST Assured library.
+
+  **Implementation**
+  - Installed and configured **json-server** to simulate a REST API using a `db.json` file containing sample contact records.
+  - Started the JSON server on **port 3000**, exposing REST endpoints such as:
+    ```
+    GET /contacts
+    ```
+  - Added the **REST Assured dependency** to the project to perform HTTP requests within JUnit tests.
+  - Implemented a test case that sends a **GET request** to the JSON server endpoint and validates the response status code and returned contact data.
+
+  **Outcome**
+  - The AddressBook system can now retrieve contact data from an external JSON server using REST API calls executed from automated tests, enabling integration testing of external REST services.
+
+---
 
 - 🧩 **UC23 – Store Address Book in Database :**  
   _Pending implementation._
@@ -553,7 +571,8 @@ mvnw spring-boot:run
 │                   ├── 📄 AddressBookApplicationTests.java
 │                   ├── 📄 ContactTest.java
 │                   ├── 📄 AddressBookServiceTest.java
-│                   └── 📄 ContactRepositoryTest.java
+│                   ├── 📄 ContactRepositoryTest.java
+│                   └── 📄 AddressBookJsonServerTest.java
 │
 ├── ⚙️ pom.xml
 │
